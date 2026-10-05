@@ -158,7 +158,20 @@ def build_bounded_sat(n_periods: int, n_clauses: int, m: int, n_required: int):
 def measure_bounded_growth(periods=(4, 8, 16, 32, 64), n_clauses=4,
                            m=3, n_required=2):
     """Measured size and solve time of the bounded-horizon reduction."""
-    import time, z3
+    import time
+    try:
+        import z3
+    except ImportError:
+        # z3 is optional: it checks the reductions, it is not on the main path.
+        # Refusing to crash here is the point -- a user without z3 should still
+        # get sections 1-3 and 5-6 of the report, and a line saying why 4 is out.
+        return [{"periods": p, "clauses": n_clauses, "bool_vars": n_clauses * p,
+                 "window_constraints": n_clauses * max(p - m + 1, 1),
+                 "size_units": n_clauses * p + n_clauses * max(p - m + 1, 1),
+                 "size_over_periods": round((n_clauses * p + n_clauses *
+                                             max(p - m + 1, 1)) / p, 3),
+                 "sat": "z3 not installed", "solve_s": None}
+                for p in periods]
     rows = []
     for N in periods:
         s, x, stats = build_bounded_sat(N, n_clauses, m, n_required)

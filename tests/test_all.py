@@ -33,7 +33,7 @@ from debtverify.nowcast import fit_bridge, trigger_probability, lead_time_quarte
 from debtverify.cli import zambia_clauses
 
 DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                    "data", "zambia_2023.json")
+                    "debtverify", "data", "zambia_2023.json")
 
 
 def load():

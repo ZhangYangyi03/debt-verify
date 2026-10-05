@@ -55,9 +55,9 @@ itself revised by more than the clause threshold proves nothing.
     git clone <repo> && cd debt-verify
     python -m debtverify
 
-One command, no dependencies beyond the standard library and z3 (used only to
-check the complexity reductions, not in the main path). Every number printed is
-computed from `data/zambia_2023.json`; edit one value and the manifest test
+One command. The only dependency is `z3-solver`, used to check the complexity
+reductions; if it is absent the report still runs and says which section is out. Every number printed is
+computed from `debtverify/data/zambia_2023.json`; edit one value and the manifest test
 fails.
 
     python -m pytest tests -q      # 31 tests
@@ -114,7 +114,7 @@ widths would be false precision.
 
 ## Provenance of the data
 
-`data/zambia_2023.json` holds, for each (indicator, reference year, vintage
+`debtverify/data/zambia_2023.json` holds, for each (indicator, reference year, vintage
 year), the value that vintage published. See `docs/DATA_SOURCES.md` for what
 each vintage is and, stated plainly, what could not be obtained. The file is
 data, not evidence: the point of the project is the method's behaviour under

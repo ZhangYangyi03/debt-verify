@@ -17,7 +17,8 @@ from .complexity import measure_bounded_growth, window_holds_over, EXPRESSIVITY_
 from .nowcast import fit_bridge, trigger_probability, lead_time_quarters
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(os.path.dirname(HERE), "data")
+# the case data ships inside the package, so a wheel install runs the same case
+DATA = os.path.join(HERE, "data")
 
 
 def _rule(ch="=", n=78):

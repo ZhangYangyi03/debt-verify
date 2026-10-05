@@ -7,12 +7,18 @@ name = "debt-verify"
 version = "0.1.0"
 description = "Verifiable execution of sovereign debt restructuring clauses under data revision"
 requires-python = ">=3.10"
-license = {text = "Apache-2.0"}
-dependencies = []
+license = "Apache-2.0"
+dependencies = ["z3-solver>=4.12"]
+
+[tool.setuptools]
+packages = ["debtverify"]
+
+[tool.setuptools.package-data]
+debtverify = ["data/*.json"]
+
 
 [project.optional-dependencies]
-reductions = ["z3-solver"]
-test = ["pytest", "z3-solver"]
+test = ["pytest"]
 
 [project.scripts]
 debt-verify = "debtverify.cli:main"

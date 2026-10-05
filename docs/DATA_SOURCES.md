@@ -1,4 +1,4 @@
-# Where the numbers in data/zambia_2023.json come from
+# Where the numbers in debtverify/data/zambia_2023.json come from
 
 ## What each series is
 
