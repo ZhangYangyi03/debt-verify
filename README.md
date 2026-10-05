@@ -136,3 +136,20 @@ verification* -- is made and measured in other domains:
 | [debt-verify](https://github.com/ZhangYangyi03/debt-verify) | a debt clause decision, until it survives the published revision record |
 | [tool-market](https://github.com/ZhangYangyi03/tool-market) | a tool's liveness, until the hash chain says which revision is live |
 | [agent-safety-bench](https://github.com/ZhangYangyi03/agent-safety-bench) | a model's safety compliance, measured rather than assumed |
+
+## Publishing (one operator step, once)
+
+The tag pipeline is wired for PyPI trusted publishing, which needs no token on
+this machine. The publisher itself has to be registered once, on the PyPI side:
+
+    PyPI -> account -> Publishing -> Add a new pending publisher
+    PyPI project name   debt-verify
+    Owner               ZhangYangyi03
+    Repository name     debt-verify
+    Workflow name       publish.yml
+    Environment         pypi
+
+After that, `git tag v0.1.0 && git push origin v0.1.0` builds and publishes with
+no credentials anywhere. Until it is registered the publish job fails with
+`invalid-publisher`, which is the correct and safe behaviour: nothing is
+uploaded and no token is stored.
