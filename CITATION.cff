@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "debt-verify: verifiable execution of sovereign debt restructuring clauses under data revision"
+abstract: "A three-valued (Kleene K3) clause verifier that answers whether a contractual trigger fires over the published revision interval rather than at a point estimate. Split-conformal bands are calibrated on the revision record itself (n=37, leave-one-out coverage 0.946 at nominal 0.90); point-value verification is decisive on 84 of 84 evaluable cells, and requiring the decision to survive the band leaves 63 unsupported. Complexity trichotomy P / NP-hard / PSPACE-hard, cross-checked against z3."
+authors:
+  - family-names: Zhang
+    given-names: Yangyi
+    affiliation: Georgetown University
+repository-code: "https://github.com/ZhangYangyi03/debt-verify"
+license: Apache-2.0
+type: software
+keywords: [sovereign debt, conformal prediction, three-valued logic, formal verification, IMF]
