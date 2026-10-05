@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+debtverify/.locks/
+*.tmp
+_run.txt
